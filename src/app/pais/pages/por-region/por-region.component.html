@@ -1,0 +1,58 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h3> Buscar por región <small> {{regionActiva | titlecase}}</small></h3>
+    <hr>
+    
+    <h5>Seleecione la region</h5>
+    
+    <!-- con la siguiente linea nos permite agregar una clase a un boton o div, dada la condicion que nososotros escribamos en 
+        entre las comillas ej.:[class.btn-primary] = "region === regionActiva"  -->
+    <!-- realiza el mismo trabajo que lo descrito previamente, pero trabaja con una función de angular y permite crear multiples 
+        condiciones en cadena
+        [ngClass]="{
+                        'btn-primary' :regionActiva === region,
+                        'btn-outline-primary' : regionActiva !== region
+                    }" -->
+                
+    <!-- regla de ORO: siempre dejar simple el html -->
+    <div class="row">
+        <div class="col">
+            <button
+                    *ngFor="let region of regiones"
+                    [class]="getClassCSS(region)" 
+                    (click) = "activarRegion(region); buscar(region)">
+                    {{region | titlecase}}
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- <h2>Por Región</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-pais-input
+            (onEnter)="buscar($event)"
+            (onDebounce)="sugerencias($event)"
+            placeholder= "Buscar region..."
+        ></app-pais-input>
+    </div>
+</div>
+
+<hr> -->
+<!-- en caso que no se presenten información al momento de buscar  -->
+<!-- para ocupar una variable qe nos permite mostrar u ocultar algún apartado de la página web ocupamos el *ngif="nombre de la variable o función" -->
+<div
+    *ngIf="hayError"
+    class="alert alert-danger">
+    No se encontró nada con el termino {{termino}}
+</div>
+
+<div
+    *ngIf="paises.length > 0"
+    class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>

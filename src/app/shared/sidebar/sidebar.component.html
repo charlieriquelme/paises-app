@@ -1,0 +1,28 @@
+<h2>Búsquedas</h2>
+<hr>
+<ul class="list-group">
+    <!-- para activar una opción dentro del lsitado solo necesitaresmo hasta el momento 
+        las características:
+        * el routerlink para especificar que ruta debemos ir
+        * routerlinkactive para especificar que nosotros debemos indicar que opción elegimos por la página web
+        * [routerLinkActiveOptions] especificamos que solo las rutas absolutas deben estar marcadas -->
+    <li 
+        routerLink="" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact:true}"
+        class="list-group-item">
+        Buscar país
+    </li>
+    <li 
+        routerLink="region"  
+        routerLinkActive="active"
+        class="list-group-item">
+        Por Región
+    </li>
+    <li 
+        routerLink="capital" 
+        routerLinkActive="active"
+        class="list-group-item">
+        Por capital
+    </li>
+</ul>

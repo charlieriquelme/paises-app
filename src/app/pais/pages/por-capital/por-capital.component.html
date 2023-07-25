@@ -1,0 +1,37 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+
+    <h2>Por Capital</h2>
+    <hr>
+    
+    <div class="row">
+        <div class="col">
+            <app-pais-input
+                (onEnter)="buscar($event)"
+                placeholder="Buscar capital..."
+            ></app-pais-input>
+        </div>
+    </div>
+    <hr>
+    
+</div>
+
+<!-- en caso que no se presenten información al momento de buscar  -->
+<!-- para ocupar una variable qe nos permite mostrar u ocultar algún apartado de la página web ocupamos el *ngif="nombre de la variable o función" -->
+<div
+    *ngIf="hayError"
+    class="alert alert-danger">
+    No se encontró nada con el termino {{termino}}
+</div>
+
+<!-- caso que si encontramos información -->
+<!-- rellenar con el ngfor -->
+
+<!-- ngIf="!hayError" -->
+<div
+    *ngIf="paises.length > 0"
+    class="row">
+    <div class="col">
+        <!-- para enviar un arreglo a un componente debemos asignar el arreglo el valor que deseeamos trabajar -->
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
